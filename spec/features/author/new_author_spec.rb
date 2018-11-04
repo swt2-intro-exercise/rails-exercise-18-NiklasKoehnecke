@@ -15,6 +15,6 @@ describe "New author page", type: :feature do
 
   it "should throw errors when saving invalid authors" do
     find('input[name="commit"]').click
-    expect(page).to have_text('error/i')
+    expect(page).to have_selector("div#error_explanation")
   end
 end
