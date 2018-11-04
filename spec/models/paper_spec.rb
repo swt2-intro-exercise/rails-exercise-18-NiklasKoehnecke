@@ -20,7 +20,7 @@ RSpec.describe Paper, type: :model do
     it "should not accept papers with invalid name" do
       @paper.year=nil
       expect(@paper).to_not be_valid
-      @paper.year="1"
+      @paper.year="a"
       expect(@paper).to_not be_valid
     end
   end
