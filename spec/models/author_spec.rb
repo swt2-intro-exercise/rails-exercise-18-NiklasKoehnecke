@@ -5,25 +5,26 @@ RSpec.describe Author, type: :model do
   before :each do
     @author = FactoryBot.create :author
   end
+  describe "missing values and creation" do
+    it "should always have a list of papers" do
+      @author.save
+      db_author = Author.find(@author.id)
+      expect(db_author.papers.empty?).to be(true)
+    end
 
-  it "should always have a list of papers" do
-    @author.save
-    db_author = Author.find(@author.id)
-    expect(db_author.papers.empty?).to be(true)
-  end
+    it "should not accept authors without last names" do
+      @author.last_name=nil
+      expect(@author).to_not be_valid
+    end
 
-  it "should not accept authors without last names" do
-    @author.last_name=nil
-    expect(@author).to_not be_valid
-  end
+    it "should not accept authors with empty last names" do
+      @author.last_name=""
+      expect(@author).to_not be_valid
+    end
 
-  it "should not accept authors with empty last names" do
-    @author.last_name=""
-    expect(@author).to_not be_valid
-  end
-
-  it "should accept valid authors" do
-    expect(@author).to be_valid
+    it "should accept valid authors" do
+      expect(@author).to be_valid
+    end
   end
 
   it "should be able to create Authors with first&last name and homepage" do
