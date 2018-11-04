@@ -8,6 +8,12 @@ RSpec.describe Author, type: :model do
     expect(@author).to_not be_valid
   end
 
+  it "should not accept authors with empty last names" do
+    @author = FactoryBot.create :author
+    @author.last_name=""
+    expect(@author).to_not be_valid
+  end
+
   it "should accept valid authors" do
     @author = FactoryBot.create :author
     expect(@author).to be_valid
