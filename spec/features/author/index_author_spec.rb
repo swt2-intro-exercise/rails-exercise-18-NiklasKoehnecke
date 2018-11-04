@@ -20,6 +20,7 @@ describe 'index auther page' do
       expect(page).to have_text author.homepage
       expect(page).to have_link 'Show', href: author_path(author)
       expect(page).to have_link 'Edit', href: edit_author_path(author)
+      expect(page).to have_selector "a[data-method='delete'][href='"+authors_path(author)+"']"
     end
   end
 
