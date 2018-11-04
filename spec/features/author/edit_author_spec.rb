@@ -14,4 +14,12 @@ describe "edit author page" do
     expect(page).to have_field('author[last_name]')
     expect(page).to have_field('author[homepage]')
   end
+
+  it "should update the database when submitted" do
+    fill_in 'author[first_name]', with: "Alan"
+    fill_in 'author[last_name]', with: "Mathison"
+    find('input[name="commit"]').click
+    @alan.reload
+    expect(@alan.name).to eq("Alan Mathison")
+  end
 end
