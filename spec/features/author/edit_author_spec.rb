@@ -9,9 +9,9 @@ describe "edit author page" do
   it "should render without error" do
   end
 
-  it "should display the same information as the show page" do
-    expect(page).to have_text(@alan.first_name)
-    expect(page).to have_text(@alan.last_name)
-    expect(page).to have_text(@alan.homepage)
+  it "should display the same information as the new page" do
+    expect(page).to have_field('author[first_name]')
+    expect(page).to have_field('author[last_name]')
+    expect(page).to have_field('author[homepage]')
   end
 end
