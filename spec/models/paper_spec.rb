@@ -6,6 +6,12 @@ RSpec.describe Paper, type: :model do
     @paper = FactoryBot.create :paper
   end
 
+  it "should always have a list of authors" do
+    @paper.save
+    @db_paper = Paper.find(@paper.id)
+    expect(@db_paper.authors).to eq({})
+  end
+
   describe "missing values" do
     it "should not accept papers with missing title" do
       @paper.title=nil
