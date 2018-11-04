@@ -1,0 +1,19 @@
+<h1>Listing articles</h1>
+
+<table name="authors_table">
+  <tr>
+    <th>Name</th>
+    <th>Homepage</th>
+    <th></th>
+  </tr>
+
+  <% @authors.each do |author| %>
+    <tr>
+      <td><%= author.name %></td>
+      <td><%= author.homepage %></td>
+      <td><%= link_to 'Show', author_path(author) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<a href="<%=new_author_path%>">New</a>
