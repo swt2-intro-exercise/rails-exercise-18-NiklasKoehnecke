@@ -19,7 +19,7 @@ describe 'index auther page' do
       expect(page).to have_text author.name
       expect(page).to have_text author.homepage
       expect(page).to have_link 'Show', href: author_path(author)
-      expect(page).to have_link 'New', href: edit_author_path(author)
+      expect(page).to have_link 'Edit', href: edit_author_path(author)
     end
   end
 
