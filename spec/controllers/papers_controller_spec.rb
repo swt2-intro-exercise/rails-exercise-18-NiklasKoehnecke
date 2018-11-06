@@ -24,21 +24,25 @@ require 'rails_helper'
 # `rails-controller-testing` gem.
 
 RSpec.describe PapersController, type: :controller do
-
+  before :each do
+    (FactoryBot.create :author).save
+  end
   # This should return the minimal set of attributes required to create a valid
   # Paper. As you add validations to Paper, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {"title" => "MyTitle",
      "venue" => "MyVenue",
-     "year" => 1
+     "year" => 1,
+     "author_ids" => ["" ]
     }
   }
 
   let(:invalid_attributes) {
     {"title" => nil,
      "venue" => nil,
-     "year" => "test"
+     "year" => "test",
+     "author_ids" => [""]
     }
   }
 
