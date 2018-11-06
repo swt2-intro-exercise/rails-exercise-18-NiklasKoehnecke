@@ -4,6 +4,13 @@ class Paper < ApplicationRecord
   validates :year, presence: true, numericality: { only_integer: true }
   has_and_belongs_to_many :authors
 
-  #score :year, (year) {where(:year == year)}
+  scope :year, (lambda do |year|
+    if year.present?
+      where(year: year)
+    else
+      unscoped # does not apply a where clause
+    end
+  end)
+  #scope :year, -> (input_year) {where year: input_year}
   #validates_associated :authors
 end
