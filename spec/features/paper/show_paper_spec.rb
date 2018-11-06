@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '' do
+describe 'show paper page' do
 
   before :each do
     @alan = FactoryBot.create :author
