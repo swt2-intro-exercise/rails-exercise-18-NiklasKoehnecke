@@ -23,12 +23,12 @@ class PapersController < ApplicationController
   def create
     @paper = Paper.new(paper_params)
 
-    print(params[:paper].inspect + "\n")
-    params[:paper][:author_ids].each do |author|
-      if !author.empty?
-        @paper.authors << Author.find(author)
-      end
-    end
+    #print(params[:paper].inspect + "\n")
+    #params[:paper][:author_ids].each do |author|
+    #  if !author.empty?
+    #    @paper.authors << Author.find(author)
+    #  end
+    #end
     if @paper.save
       redirect_to @paper, notice: 'Paper was successfully created.'
     else
@@ -59,6 +59,6 @@ class PapersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def paper_params
-      params.require(:paper).permit( {:author_ids => []} ,:title, :venue, :year)
+      params.require(:paper).permit(:title, :venue, :year, {:author_ids => []})
     end
 end

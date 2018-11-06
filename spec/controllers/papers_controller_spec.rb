@@ -34,7 +34,7 @@ RSpec.describe PapersController, type: :controller do
     {"title" => "MyTitle",
      "venue" => "MyVenue",
      "year" => 1,
-     "author_ids" => ["" ]
+     "author_ids" => ["", "1"]
     }
   }
 
